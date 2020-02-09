@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,30 @@ namespace BabyNames
         public MainWindow()
         {
             InitializeComponent();
+            decadeTopNames = new ObservableCollection<string>();
+            ListDecadeTopNames.ItemsSource = decadeTopNames;
+        }
+
+        private ObservableCollection<string> decadeTopNames;
+        private List<BabyName> babyNames;
+
+        private void ListDecadeTopNames_Loaded(object sender, RoutedEventArgs e)
+        {
+            string filePath = @".\babynames.txt";
+            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs, Encoding.Default);
+            
+            string str;
+            List<string> lines = new List<string>();
+            int index = 0;
+
+            //while (!sr.EndOfStream)
+            while(index < 10)
+            {
+                str = sr.ReadLine();
+                decadeTopNames.Add(str);
+                index++;
+            }
         }
     }
 }
