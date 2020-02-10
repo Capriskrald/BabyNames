@@ -7,6 +7,41 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox Name="ListDecadeTopNames" Loaded="ListDecadeTopNames_Loaded"></ListBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Decades"
+               Grid.Column="0"
+               Grid.Row="0"></Label>
+        <ListBox Name="ListDecades" 
+                 Grid.Column="0"
+                 Grid.Row="1" SelectionChanged="ListDecades_SelectionChanged">
+            <ListBoxItem>1900</ListBoxItem>
+            <ListBoxItem>1910</ListBoxItem>
+            <ListBoxItem>1920</ListBoxItem>
+            <ListBoxItem>1930</ListBoxItem>
+            <ListBoxItem>1940</ListBoxItem>
+            <ListBoxItem>1950</ListBoxItem>
+            <ListBoxItem>1960</ListBoxItem>
+            <ListBoxItem>1970</ListBoxItem>
+            <ListBoxItem>1980</ListBoxItem>
+            <ListBoxItem>1990</ListBoxItem>
+            <ListBoxItem>2000</ListBoxItem>
+        </ListBox>
+        <Label Content="Top 10 baby names in selected decade"
+               Grid.Column="1"
+               Grid.Row="0"></Label>
+        <ListBox Name="ListDecadeTopNames" 
+                 Loaded="ListDecadeTopNames_Loaded"
+                 Grid.Column="1"
+                 Grid.Row="1"></ListBox>
+
     </Grid>
 </Window>
