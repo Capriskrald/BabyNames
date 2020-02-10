@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabyNames"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -41,7 +41,48 @@
         <ListBox Name="ListDecadeTopNames" 
                  Loaded="ListDecadeTopNames_Loaded"
                  Grid.Column="1"
+                 Grid.ColumnSpan="2"
                  Grid.Row="1"></ListBox>
 
+        <GroupBox Header="Search"
+                  Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Margin="10, 10, 10, 10">
+            <Grid Name="searchGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="0">_Name:</Label>
+                <TextBox Name="NameBox" 
+                         Grid.Column="1"
+                         Grid.Row="0"
+                         Margin="0, 3, 0, 3"></TextBox>
+                <Button Name="SearchButton"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="20, 5, 180, 5"
+                        MinHeight="20"
+                        MinWidth="40"
+                        Content="Search"
+                        FontWeight="Bold"></Button>
+                <Label Grid.Column="1"
+                       Grid.Row="2">Average ranking: </Label>
+                <TextBlock Name="AverageRanking"
+                           Grid.Column="1"
+                           Grid.Row="2"
+                           Visibility="Visible"></TextBlock>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
