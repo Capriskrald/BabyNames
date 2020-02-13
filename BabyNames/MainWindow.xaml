@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BabyNames"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500">
+        Title="MainWindow" Height="450" MinHeight="300" Width="520" MinWidth="450">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="275"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
@@ -19,10 +19,14 @@
         </Grid.RowDefinitions>
         <Label Content="Decades"
                Grid.Column="0"
-               Grid.Row="0"></Label>
+               Grid.Row="0"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"></Label>
         <ListBox Name="ListDecades" 
                  Grid.Column="0"
-                 Grid.Row="1" SelectionChanged="ListDecades_SelectionChanged">
+                 Grid.Row="1" SelectionChanged="ListDecades_SelectionChanged"
+                 HorizontalAlignment="Center"
+                 MinWidth="60">
             <ListBoxItem>1900</ListBoxItem>
             <ListBoxItem>1910</ListBoxItem>
             <ListBoxItem>1920</ListBoxItem>
@@ -37,12 +41,14 @@
         </ListBox>
         <Label Content="Top 10 baby names in selected decade"
                Grid.Column="1"
-               Grid.Row="0"></Label>
+               Grid.Row="0"
+               VerticalAlignment="Center"></Label>
         <ListBox Name="ListDecadeTopNames" 
                  Loaded="ListDecadeTopNames_Loaded"
-                 Grid.Column="1"
-                 Grid.ColumnSpan="2"
-                 Grid.Row="1"></ListBox>
+                 Grid.Column="1" Grid.ColumnSpan="2"
+                 Grid.Row="1"
+                 MinWidth="320"
+                 HorizontalAlignment="Left"></ListBox>
 
         <GroupBox Header="Search"
                   Grid.Row="2"
@@ -52,8 +58,9 @@
             <Grid Name="searchGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="0.7*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
@@ -66,22 +73,43 @@
                        Grid.Row="0">_Name:</Label>
                 <TextBox Name="NameBox" 
                          Grid.Column="1"
+                         Grid.ColumnSpan="2"
                          Grid.Row="0"
-                         Margin="0, 3, 0, 3"></TextBox>
+                         Margin="0, 3, 10, 3"></TextBox>
                 <Button Name="SearchButton"
                         Grid.Column="1"
+                        Grid.ColumnSpan="2"
                         Grid.Row="1"
-                        Margin="20, 5, 180, 5"
-                        MinHeight="20"
-                        MinWidth="40"
+                        Margin="20, 5"
+                        MinHeight="20" MaxHeight="25"
+                        MinWidth="50" MaxWidth="70"
+                        HorizontalAlignment="Left"
                         Content="Search"
-                        FontWeight="Bold"></Button>
+                        FontWeight="Bold" Click="SearchButton_Click"></Button>
                 <Label Grid.Column="1"
-                       Grid.Row="2">Average ranking: </Label>
-                <TextBlock Name="AverageRanking"
-                           Grid.Column="1"
-                           Grid.Row="2"
-                           Visibility="Visible"></TextBlock>
+                       Grid.Row="2">Average ranking:</Label>
+                <TextBox Name="AverageRankBox" 
+                         Grid.Column="2"
+                         Grid.Row="2"
+                         Margin="0, 3, 10, 3"
+                         IsReadOnly="True"></TextBox>
+                <Label Grid.Column="1"
+                       Grid.Row="3">Trend: </Label>
+                <TextBox Name="TrendBox" 
+                         Grid.Column="2"
+                         Grid.Row="3"
+                         Margin="0, 3, 10, 3"
+                         IsReadOnly="True"></TextBox>
+                <Label Grid.Column="4"
+                       Grid.Row="0"
+                       Content="    Year        Rank"></Label>
+                <ListBox Name="YearRankBox" 
+                         Grid.Row="1" Grid.RowSpan="4" 
+                         Grid.Column="3"
+                         MinWidth="100" MaxWidth="150"
+                         HorizontalAlignment="Left"
+                         Margin="5, 5">
+                </ListBox>
             </Grid>
         </GroupBox>
     </Grid>

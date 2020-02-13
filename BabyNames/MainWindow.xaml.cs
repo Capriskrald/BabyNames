@@ -27,11 +27,16 @@ namespace BabyNames
         {
             InitializeComponent();
             babyNames = new List<BabyName>();
+            
             decadeTopNames = new ObservableCollection<string>();
             ListDecadeTopNames.ItemsSource = decadeTopNames;
+
+            yearRank = new ObservableCollection<string>();
+            YearRankBox.ItemsSource = yearRank;
         }
 
         private ObservableCollection<string> decadeTopNames;
+        private ObservableCollection<string> yearRank;
         private List<BabyName> babyNames;
         private string[,] rankMatrix = new string[11, 10];
 
@@ -93,6 +98,46 @@ namespace BabyNames
             {
                 decadeTopNames.Add(string.Format("{0} {1}", i, rankMatrix[decadeIndex, i - 1]));
             }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string name = NameBox.Text;
+
+            int index = 0;
+            while (babyNames[index].Name != name)
+                index++;
+
+            yearRank.Clear();
+            
+            for(int decade = 1900; decade <= 2000; decade += 10)
+                yearRank.Add(string.Format("{0} \t {1}", decade, babyNames[index].Rank(decade)));
+
+            AverageRankBox.Text = babyNames[index].AverageRank().ToString();
+            TrendBox.Text = babyNames[index].Trend().ToString();
+
+            //string name = NameBox.Text;
+
+            //int index = 0;
+            //while (babyNames[index].Name != name)
+            //    index++;
+
+            //yearRank.Clear();
+            //int averageRank = 0;
+            //int timesOnRankList = 0;
+            //for (int decade = 1900; decade <= 2000; decade += 10)
+            //{
+            //    int rank = babyNames[index].Rank(decade);
+            //    if (rank > 0)
+            //    {
+            //        averageRank += rank;
+            //        timesOnRankList++;
+            //    }
+            //    yearRank.Add(string.Format("{0} \t {1}", decade, rank));
+            //}
+
+            //averageRank = averageRank / timesOnRankList;
+            //AverageRankBox.Text = averageRank.ToString();
         }
     }
 }
