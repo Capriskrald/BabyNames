@@ -139,5 +139,30 @@ namespace BabyNames
             //averageRank = averageRank / timesOnRankList;
             //AverageRankBox.Text = averageRank.ToString();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.FontSize = 8;
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.FontSize = 12;
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.FontSize = 16;
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.FontSize = 24;
+        }
     }
 }
